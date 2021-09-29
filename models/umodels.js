@@ -10,8 +10,8 @@ const modelSchema = mongoose.Schema({
   age: { type: Number, required: true },
 });
 
-const modelo = module.exports = mongoose.model('modelo', modelSchema);
+const Modelo = module.exports = mongoose.model('modelo', modelSchema);
 
 module.exports.get = function (callback, limit) {
-    modelo.find(callback).limit(limit);
+    Modelo.find(callback).limit(limit);
 };
