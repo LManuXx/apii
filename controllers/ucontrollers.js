@@ -1,6 +1,6 @@
-const modelo = require('../models/umodels');
+var modelo = require('../models/umodels');
 
-exports.index = function (req, res) { 
+exports.app = function (req, res) { 
     modelo.get (function (err, models) { 
         if (err) { 
             res.json ({ 
@@ -9,9 +9,9 @@ exports.index = function (req, res) {
 }); 
         } 
         res.json ({ 
-          estado: "éxito", 
-          mensaje: "Datos correctos", 
-          datos: models
+          status: "éxito", 
+          message: "Datos correctos", 
+          data: models
         }); 
     }); 
 };

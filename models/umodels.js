@@ -13,8 +13,8 @@ const modelSchema = mongoose.Schema({
          required: true },
 });
 
-const modelo = module.exports = mongoose.model('modelo', modelSchema);
+var modelo = module.exports = mongoose.model('modelo', modelSchema);
 
 module.exports.get = function (callback, limit) {
     modelo.find(callback).limit(limit);
-}
+};

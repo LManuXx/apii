@@ -1,7 +1,9 @@
-const router = require('express').Router();
+var router = require('express').Router();
 const controllers = require('../controllers/ucontrollers');
-router.route = ('/users');
-  get(controllers.app)
-  post(controllers.new);
+router.get('/', function (req, res) {
+    res.json({
+        status: 'API Its Working',
+        message: 'Welcome to RESTHub crafted with love!',
+    });
 
 module.exports = router;
