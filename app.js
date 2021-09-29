@@ -5,19 +5,18 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true});
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use (bodyParser.json ());
 
 const apiRoutes = require('./routes/uroutes');
+const { response } = require('express');
 
-app.get('/', (req, res) => res.send('Creo que esta funcionando'));
+app.get('/', (req, res) => response.send('Creo que esta funcionando'));
 
 app.use('/api', apiRoutes);
 
 app.listen(10000, function () {
-  console.log("funciona?");
+  console.log("Servidor activadisimo en el puerto 10000");
 });

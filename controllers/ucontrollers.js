@@ -28,7 +28,7 @@ exports.new = function (req, res) {
           res.json (err);
 res.json ({ 
             menssage: 'Nuevo usuario registrado', 
-            data: modelo
+            data: user
         }); 
     }); 
 };
