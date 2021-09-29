@@ -11,9 +11,8 @@ app.use(methodOverride());
 app.use (bodyParser.json ());
 
 const apiRoutes = require('./routes/uroutes');
-const { response } = require('express');
 
-app.get('/', (req, res) => response.send('Creo que esta funcionando'));
+app.get('/', (req, res) => res.send('Creo que esta funcionando'));
 
 app.use('/api', apiRoutes);
 

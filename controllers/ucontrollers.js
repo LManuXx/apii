@@ -6,11 +6,11 @@ exports.app = function (req, res) {
             res.json ({ 
               status: "error", 
               message: err, 
-}); 
-        } 
+});
+    }
         res.json ({ 
-          status: "éxito", 
-          message: "Datos correctos", 
+          status: 'éxito', 
+          message: 'Datos correctos', 
           data: models
         }); 
     }); 
@@ -18,7 +18,7 @@ exports.app = function (req, res) {
 
 exports.new = function (req, res) { 
     var user = new modelo (); 
-    user.name = req.body.name? req.body.name: contact.name; 
+    user.name = req.body.name ? req.body.name : modelo.name; 
     user.surname = req.body.surname; 
     user.mail = req.body.mail; 
     user.age = req.body.age;
@@ -27,7 +27,7 @@ exports.new = function (req, res) {
         if (err) 
           res.json (err);
 res.json ({ 
-            menssage: 'Nuevo usuario registrado', 
+            message: 'Nuevo usuario registrado', 
             data: user
         }); 
     }); 
