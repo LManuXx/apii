@@ -1,12 +1,34 @@
-const mongoose = require('mongoose');
-const Data = mongoose.model("Data");
-const models = require('../models/umodels')(app, mongoose);
+const modelo = require('../models/umodels');
 
-exports.findAllData = function (req, res) {
-    TVShow.find(function (err, userData) {
-      if (err) res.send(500, err.message);
-  
-      console.log("GET /userData");
-      res.status(200).jsonp(userData);
-    });
-  };
+exports.index = function (req, res) { 
+    modelo.get (function (err, models) { 
+        if (err) { 
+            res.json ({ 
+              status: "error", 
+              message: err, 
+}); 
+        } 
+        res.json ({ 
+          estado: "éxito", 
+          mensaje: "Datos correctos", 
+          datos: models
+        }); 
+    }); 
+};
+
+exports.new = function (req, res) { 
+    var user = new modelo (); 
+    user.name = req.body.name? req.body.name: contact.name; 
+    user.surname = req.body.surname; 
+    user.mail = req.body.mail; 
+    user.age = req.body.age;
+    user.number = req.body.phone;
+    user.save (function (err) { 
+        if (err) 
+          res.json (err);
+res.json ({ 
+            menssage: 'Nuevo usuario registrado', 
+            data: modelo
+        }); 
+    }); 
+};

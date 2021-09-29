@@ -1,12 +1,20 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const userData = new Schema({
-  name: { type: String },
-  surname: { type: String },
-  country: { type: String },
-  age: { type: Number },
-  gender: { type: String },
+const modelSchema = mongoose.Schema({
+  name: { type: String,
+          required: true },
+
+  surname: { type: String,
+             required: true },
+
+  mail: { type: String },
+
+  age: { type: Number,
+         required: true },
 });
 
-module.exports = mongoose.model('data', userData);
+const modelo = module.exports = mongoose.model('modelo', modelSchema);
+
+module.exports.get = function (callback, limit) {
+    modelo.find(callback).limit(limit);
+}

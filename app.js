@@ -5,20 +5,18 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use (bodyParser.json ());
 
-// importamos los modelos y los controllers.
-
-const rutas = require('./routes/uroutes');
-
-//const router = express.Router();
-
-//app.use(router);
+const apiRoutes = require('./routes/uroutes');
+app.get('/', (req, res) => res.send('Creo que esta funcionando'));
+app.use('/api', apiRoutes);
 
 
 
-app.listen(5000, function () {
-  console.log("funciona");
+
+app.listen(10000, function () {
+  console.log("funciona?");
 });

@@ -1,7 +1,7 @@
-var express = require('express');
-var userData = express.Router();
+const router = require('express').Router();
 const controllers = require('../controllers/ucontrollers');
+router.route = ('/users');
+  get(controllers.app)
+  post(controllers.new);
 
-
-userData.route('/userData')
-  .get(controllers.findAllData)
+module.exports = router;
