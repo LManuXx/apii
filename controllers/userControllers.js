@@ -1,6 +1,6 @@
-const Modelo = require('../models/umodels');
+const Modelo = require('../models/userModels');
 
-function getUsers (req, res) {
+function getUsers(req, res) {
   Modelo.find((err, models) => {
     if (err) {
       res.status(400).send(err);

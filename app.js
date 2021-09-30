@@ -3,14 +3,13 @@ const express = require('express');
 
 const app = express();
 const methodOverride = require('method-override');
+const apiRoutes = require('./routes/userRoutes');
 require('mongoose');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride());
 app.use(express.json());
-
-const apiRoutes = require('./routes/uroutes');
 
 app.get('/', (req, res) => res.send('Creo que esta funcionando'));
 
