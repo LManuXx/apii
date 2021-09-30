@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const usController = require('../controllers/ucontrollers');
 
-router.route('/modelo')
-  .get(usController.app)
-  .post(usController.new);
-	
+router.get('/modelo', usController.getUsers);
+router.post('/modelo', usController.postUsers);
+
 module.exports = router;
