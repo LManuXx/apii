@@ -1,4 +1,3 @@
-const { models } = require('mongoose');
 const Modelo = require('../models/umodels');
 
 exports.app = function (req, res) {
