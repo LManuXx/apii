@@ -4,14 +4,21 @@ const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
 const apiRoutes = require('./routes/userRoutes');
-require('mongoose');
+const mongoose = require('mongoose');
+const db = mongoose.connection;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride());
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Creo que esta funcionando'));
+if(!db)
+    console.log("Error connecting db")
+else
+    console.log("Db connected successfully")
+
+
+app.get('/', (req, res) => res.send('funcionando'));
 
 app.use('/api', apiRoutes);
 
