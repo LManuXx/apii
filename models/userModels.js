@@ -9,9 +9,9 @@ const modelSchema = new Schema({
 
   mail: { type: String },
 
-  age: { type: Number, required: true },
+  age: { type: Number },
 
-  password: { type: String, required: true },
+  password: { type: Number, required: true },
 });
 
 const User = mongoose.model('User', modelSchema);

@@ -17,18 +17,31 @@ function postUsers(req, res) {
   });
 }
 
-function updateUsers(req, res){
-  User.find((err, users)={
+function updateUsers(req, res) {
+  User.find(req.params.id, (err, user) => {
+    user.name = req.body.name;
+    user.surname = req.body.username;
+    user.mail = req.mail.mail;
+    user.age = req.body.age;
+    user.password = req.body.password;
 
-  };
-);
+    user.save(() => {
+      if (err) return res.status(400).send(err.message);
+      return res.status(200).jsonp(user);
+    });
+  });
 }
 
-function deleteUsers(req, res){
-  User.find((err, users)={
-
-  };
-);
+function deleteUsers(req, res) {
+  User.find((req.params.id, (err, user) => {
+    user.remove((err) => {
+      if (err) return res.status(400).send(err.message);
+      res.status(200).send(user);
+    });
+  })
+  );
 }
 
-module.exports = { getUsers, postUsers };
+module.exports = {
+  getUsers, postUsers, deleteUsers, updateUsers,
+};

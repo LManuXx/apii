@@ -3,8 +3,10 @@ const express = require('express');
 
 const app = express();
 const methodOverride = require('method-override');
-const apiRoutes = require('./routes/userRoutes');
+
 const mongoose = require('mongoose');
+const apiRoutes = require('./routes/userRoutes');
+
 const db = mongoose.connection;
 
 app.use(express.urlencoded({ extended: false }));
@@ -12,11 +14,9 @@ app.use(express.json());
 app.use(methodOverride());
 app.use(express.json());
 
-if(!db)
-    console.log("Error connecting db")
-else
-    console.log("Db connected successfully")
-
+if (db) {
+  console.log('El servidor esta en marcha');
+}
 
 app.get('/', (req, res) => res.send('funcionando'));
 
