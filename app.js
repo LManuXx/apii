@@ -5,7 +5,7 @@ const app = express();
 const methodOverride = require('method-override');
 
 const mongoose = require('mongoose');
-const apiRoutes = require('./routes/userRoutes');
+
 
 const db = mongoose.connection;
 
@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride());
 app.use(express.json());
+
+const apiRoutes = require('./routes/userRoutes');
 
 if (db) {
   console.log('El servidor esta en marcha');

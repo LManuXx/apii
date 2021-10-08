@@ -38,7 +38,7 @@ function deleteUsers(req, res) {
       if (err) return res.status(400).send(err.message);
       res.status(200).send(user);
     });
-  })
+      })
   );
 }
 
