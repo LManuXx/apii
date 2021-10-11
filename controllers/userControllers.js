@@ -9,6 +9,14 @@ function getUsers(req, res) {
   });
 }
 
+function getUsersById(req, res) {
+  User.findById(req.params.User_id, (err, user) => {
+    if (err) {
+      res.status(400).send(err); }
+    return res.status(200).send(user);
+  });
+}
+
 function postUsers(req, res) {
   const user = new User(req.body);
   user.save((err, newUser) => {
@@ -21,7 +29,7 @@ function updateUsers(req, res) {
   User.find(req.params.id, (err, user) => {
     user.name = req.body.name;
     user.surname = req.body.username;
-    user.mail = req.mail.mail;
+    user.mail = req.body.mail;
     user.age = req.body.age;
     user.password = req.body.password;
 
@@ -38,10 +46,10 @@ function deleteUsers(req, res) {
       if (err) return res.status(400).send(err.message);
       res.status(200).send(user);
     });
-      })
+  })
   );
 }
 
 module.exports = {
-  getUsers, postUsers, deleteUsers, updateUsers,
+  getUsers, postUsers, deleteUsers, updateUsers, getUsersById,
 };

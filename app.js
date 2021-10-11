@@ -4,28 +4,21 @@ const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
 
-const mongoose = require('mongoose');
-
-
-const db = mongoose.connection;
+const port = process.env.PORT || 8080;
+const apiRoutes = require('./routes/userRoutes');
+require('./server');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride());
 app.use(express.json());
 
-const apiRoutes = require('./routes/userRoutes');
-
-if (db) {
-  console.log('El servidor esta en marcha');
-}
-
 app.get('/', (req, res) => res.send('funcionando'));
 
 app.use('/api', apiRoutes);
 
-app.listen(8080, () => {
-  console.log('Servidor activadisimo en el puerto 8080');
+app.listen(port, () => {
+  console.log('Servidor funcionando en el puerto ${port}');
 });
 
 module.exports = app;
