@@ -18,7 +18,7 @@ app.get('/', (req, res) => res.send('funcionando'));
 app.use('/api', apiRoutes);
 
 app.listen(port, () => {
-  console.log('Servidor funcionando en el puerto ${port}');
+  console.log('Servidor funcionando en el puerto: ' + port);
 });
 
 module.exports = app;

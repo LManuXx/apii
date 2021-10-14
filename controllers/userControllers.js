@@ -41,12 +41,12 @@ function updateUsers(req, res) {
 }
 
 function deleteUsers(req, res) {
-  User.findByIdAndDelete((req.params.id, (err, user) => {
+  User.findById(req.params.id, (err, user) => {
     user.remove((err) => {
       if (err) return res.status(400).send(err.message);
       res.status(200).send();
     });
-  })
+  }
   );
 }
 
