@@ -28,14 +28,14 @@ function postUsers(req, res) {
 function updateUsers(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.name = req.body.name;
-    user.surname = req.body.username;
+    user.surname = req.body.surname;
     user.mail = req.body.mail;
     user.age = req.body.age;
     user.password = req.body.password;
 
-    user.save(() => {
-      if (err) return res.status(400).send(err.message);
-      res.status(200).jsonp(user);
+    user.save((error, newUser) => {
+      if (err) return res.status(400).send(error);
+      return res.status(200).send(newUser);
     });
   });
 }
@@ -46,10 +46,13 @@ function deleteUsers(req, res) {
       if (err) return res.status(400).send(err.message);
       res.status(200).send();
     });
-  }
-  );
+  });
 }
 
 module.exports = {
-  getUsers, postUsers, deleteUsers, updateUsers, getUsersById,
+  getUsers,
+  postUsers,
+  deleteUsers,
+  updateUsers,
+  getUsersById,
 };

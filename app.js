@@ -1,12 +1,12 @@
 /* Se importa todo lo necesario. */
+require('./server');
+
 const express = require('express');
+const methodOverride = require('method-override');
+const apiRoutes = require('./routes/userRoutes');
 
 const app = express();
-const methodOverride = require('method-override');
-
 const port = process.env.PORT || 8080;
-const apiRoutes = require('./routes/userRoutes');
-require('./server');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
