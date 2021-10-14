@@ -1,3 +1,4 @@
+/* Creo los modelos de los usuarios */
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -15,5 +16,5 @@ const modelSchema = new Schema({
 });
 
 const User = mongoose.model('User', modelSchema);
-
+/* Exporto los modelos */
 module.exports = User;

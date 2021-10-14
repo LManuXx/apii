@@ -1,5 +1,5 @@
 const User = require('../models/userModels');
-
+/* Creo los controladores de los users */
 function getUsers(req, res) {
   User.find((err, users) => {
     if (err) {
@@ -8,7 +8,7 @@ function getUsers(req, res) {
     return res.status(200).send(users);
   });
 }
-
+/* Obtener usuarios por id */
 function getUsersById(req, res) {
   User.findById(req.params.id, (err, user) => {
     if (err) {
@@ -16,7 +16,7 @@ function getUsersById(req, res) {
     res.status(200).send(user);
   });
 }
-
+/* Crear nuevos usuarios */
 function postUsers(req, res) {
   const user = new User(req.body);
   user.save((err, newUser) => {
@@ -24,7 +24,7 @@ function postUsers(req, res) {
     return res.status(200).send(newUser);
   });
 }
-
+/* Actualizar usuarios */
 function updateUsers(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.name = req.body.name;
@@ -39,7 +39,7 @@ function updateUsers(req, res) {
     });
   });
 }
-
+/* Eliminar usuarios */
 function deleteUsers(req, res) {
   User.findById(req.params.id, (err, user) => {
     user.remove((err) => {
@@ -48,7 +48,7 @@ function deleteUsers(req, res) {
     });
   });
 }
-
+/* Exporto todas las funciones */
 module.exports = {
   getUsers,
   postUsers,
